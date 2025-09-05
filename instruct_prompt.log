@@ -1,0 +1,1387 @@
+2025-09-05 21:08:30.473752: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1757106510.581358    7260 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1757106510.615124    7260 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1757106510.684496    7260 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1757106510.684549    7260 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1757106510.684552    7260 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1757106510.684554    7260 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2025-09-05 21:08:30.711163: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Working with deepseek-ai/deepseek-coder-6.7b-instruct quantization True...
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]Fetching 2 files:  50%|█████     | 1/2 [07:40<07:40, 460.78s/it]Fetching 2 files: 100%|██████████| 2/2 [07:40<00:00, 230.39s/it]
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:58<00:58, 58.74s/it]Loading checkpoint shards: 100%|██████████| 2/2 [01:18<00:00, 35.77s/it]Loading checkpoint shards: 100%|██████████| 2/2 [01:18<00:00, 39.22s/it]
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+/usr/local/lib/python3.12/dist-packages/transformers/generation/utils.py:1720: UserWarning: You have modified the pretrained model configuration to control generation. This is a deprecated strategy to control generation and will be removed in v5. Please use and modify the model generation configuration (see https://huggingface.co/docs/transformers/generation_strategies#default-text-generation-configuration )
+  warnings.warn(
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:32021 for open-end generation.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:32021 for open-end generation.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:32021 for open-end generation.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:32021 for open-end generation.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:32021 for open-end generation.
+Task_ID HumanEval/156:
+Prompt:
+
+def int_to_mini_roman(number):
+    """
+    Given a positive integer, obtain its roman numeral equivalent as a string,
+    and return it in lowercase.
+    Restrictions: 1 <= num <= 1000
+
+    Examples:
+    >>> int_to_mini_roman(19) == 'xix'
+    >>> int_to_mini_roman(152) == 'clii'
+    >>> int_to_mini_roman(426) == 'cdxxvi'
+    """
+
+Response:
+
+def int_to_mini_roman(number):
+    """
+    Given a positive integer, obtain its roman numeral equivalent as a string,
+    and return it in lowercase.
+    Restrictions: 1 <= num <= 1000
+
+    Examples:
+    >>> int_to_mini_roman(19) == 'xix'
+    >>> int_to_mini_roman(152) == 'clii'
+    >>> int_to_mini_roman(426) == 'cdxxvi'
+    """
+    roman_numerals = {
+        1000: 'm',
+        900: 'cm',
+        500: 'd',
+        400: 'cd',
+        100: 'c',
+        90: 'xc',
+        50: 'l',
+        40: 'xl',
+        10: 'x',
+        9: 'ix',
+        5: 'v',
+        4: 'iv',
+        1: 'i'
+    }
+
+    result = ''
+
+    for key in roman_numerals:
+        while number >= key:
+            result += roman_numerals[key]
+            number -= key
+
+    return result
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+
+#tests/test_int_to_mini_roman.py
+import unittest
+from int_to_mini_roman import int_to_mini_roman
+
+
+class TestIntToMiniRoman(unittest.TestCase):
+
+    def test_int_to_mini_roman(self):
+        self.assertEqual(int_to_mini_roman(19), 'xix')
+        self.assertEqual(int_to_mini_roman(152), 'clii')
+        self.assertEqual(int_to_mini_roman(426), 'cdxxvi')
+
+
+if __name__ == "__main__":
+    unittest.main()
+
+Task_ID HumanEval/11:
+Prompt:
+from typing import List
+
+
+def string_xor(a: str, b: str) -> str:
+    """ Input are two strings a and b consisting only of 1s and 0s.
+    Perform binary XOR on these inputs and return result also as a string.
+    >>> string_xor('010', '110')
+    '100'
+    """
+
+Response:
+from typing import List
+
+
+def string_xor(a: str, b: str) -> str:
+    """ Input are two strings a and b consisting only of 1s and 0s.
+    Perform binary XOR on these inputs and return result also as a string.
+    >>> string_xor('010', '110')
+    '100'
+    """
+    result = ''
+    for i in range(len(a)):
+        if a[i] == b[i]:
+            result += '0'
+        else:
+            result += '1'
+    return result
+
+def string_and(a: str, b: str) -> str:
+    """ Input are two strings a and b consisting only of 1s and 0s.
+    Perform binary AND on these inputs and return result also as a string.
+    >>> string_and('010', '110')
+    '010'
+    """
+    result = ''
+    for i in range(len(a)):
+        if a[i] == '1' and b[i] == '1':
+            result += '1'
+        else:
+            result += '0'
+    return result
+
+def string_or(a: str, b: str) -> str:
+    """ Input are two strings a and b consisting only of 1s and 0s.
+    Perform binary OR on these inputs and return result also as a string.
+    >>> string_or('010', '110')
+    '110'
+    """
+    result = ''
+    for i in range(len(a)):
+        if a[i] == '1' or b[i] == '1':
+            result += '1'
+        else:
+            result += '0'
+    return result
+
+def string_not(a: str) -> str:
+    """ Input is a string a consisting only of 1s and 0s.
+    Perform binary NOT on this input and return result also as a string.
+    >>> string_not('010')
+    '101'
+   
+
+Task_ID HumanEval/127:
+Prompt:
+
+def intersection(interval1, interval2):
+    """You are given two intervals,
+    where each interval is a pair of integers. For example, interval = (start, end) = (1, 2).
+    The given intervals are closed which means that the interval (start, end)
+    includes both start and end.
+    For each given interval, it is assumed that its start is less or equal its end.
+    Your task is to determine whether the length of intersection of these two 
+    intervals is a prime number.
+    Example, the intersection of the intervals (1, 3), (2, 4) is (2, 3)
+    which its length is 1, which not a prime number.
+    If the length of the intersection is a prime number, return "YES",
+    otherwise, return "NO".
+    If the two intervals don't intersect, return "NO".
+
+
+    [input/output] samples:
+    intersection((1, 2), (2, 3)) ==> "NO"
+    intersection((-1, 1), (0, 4)) ==> "NO"
+    intersection((-3, -1), (-5, 5)) ==> "YES"
+    """
+
+Response:
+
+def intersection(interval1, interval2):
+    """You are given two intervals,
+    where each interval is a pair of integers. For example, interval = (start, end) = (1, 2).
+    The given intervals are closed which means that the interval (start, end)
+    includes both start and end.
+    For each given interval, it is assumed that its start is less or equal its end.
+    Your task is to determine whether the length of intersection of these two 
+    intervals is a prime number.
+    Example, the intersection of the intervals (1, 3), (2, 4) is (2, 3)
+    which its length is 1, which not a prime number.
+    If the length of the intersection is a prime number, return "YES",
+    otherwise, return "NO".
+    If the two intervals don't intersect, return "NO".
+
+
+    [input/output] samples:
+    intersection((1, 2), (2, 3)) ==> "NO"
+    intersection((-1, 1), (0, 4)) ==> "NO"
+    intersection((-3, -1), (-5, 5)) ==> "YES"
+    """
+    # find intersection
+    start = max(interval1[0], interval2[0])
+    end = min(interval1[1], interval2[1])
+
+    # if intervals don't intersect
+    if start > end:
+        return "NO"
+
+    # calculate length of intersection
+    length = end - start
+
+    # check if length is prime
+    if length < 2:
+        return "NO"
+    for i in range(2, int(length ** 0.5) + 1):
+        if length % i == 0:
+            return "NO"
+    return "YES"
+
+
+print(intersection((1, 2), (2, 3)))  # "NO"
+print(intersection((-1, 1), (0, 4)))  # "NO"
+print(intersection((-3, -1), (-5, 5)))  # "YES"
+print(intersection((1, 3),
+
+Task_ID HumanEval/7:
+Prompt:
+from typing import List
+
+
+def filter_by_substring(strings: List[str], substring: str) -> List[str]:
+    """ Filter an input list of strings only for ones that contain given substring
+    >>> filter_by_substring([], 'a')
+    []
+    >>> filter_by_substring(['abc', 'bacd', 'cde', 'array'], 'a')
+    ['abc', 'bacd', 'array']
+    """
+
+Response:
+from typing import List
+
+
+def filter_by_substring(strings: List[str], substring: str) -> List[str]:
+    """ Filter an input list of strings only for ones that contain given substring
+    >>> filter_by_substring([], 'a')
+    []
+    >>> filter_by_substring(['abc', 'bacd', 'cde', 'array'], 'a')
+    ['abc', 'bacd', 'array']
+    """
+    return [s for s in strings if substring in s]
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()
+    strings = ['abc', 'bacd', 'cde', 'array']
+    substring = 'a'
+    print(filter_by_substring(strings, substring))from typing import List
+
+def filter_by_substring(strings: List[str], substring: str) -> List[str]:
+    """ Filter an input list of strings only for ones that contain given substring
+    >>> filter_by_substring([], 'a')
+    []
+    >>> filter_by_substring(['abc', 'bacd', 'cde', 'array'], 'a')
+    ['abc', 'bacd', 'array']
+    """
+    return [s for s in strings if substring in s]
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()
+    strings = ['abc', 'bacd', 'cde', 'array']
+    substring = 'a'
+    print(filter_by_substring(strings, substring))from typing import List
+
+def filter_by_substring(strings: List[str], substring: str) -> List[str]:
+    """ Filter an input list of strings only for ones that contain given substring
+    >>> filter_by_substring([], 'a')
+    []
+    >>> filter_by_substring(['abc', 'bacd', 'cde', 'array'], 'a')
+    ['abc', 'bacd', 'array']
+
+Task_ID HumanEval/145:
+Prompt:
+
+def order_by_points(nums):
+    """
+    Write a function which sorts the given list of integers
+    in ascending order according to the sum of their digits.
+    Note: if there are several items with similar sum of their digits,
+    order them based on their index in original list.
+
+    For example:
+    >>> order_by_points([1, 11, -1, -11, -12]) == [-1, -11, 1, -12, 11]
+    >>> order_by_points([]) == []
+    """
+
+Response:
+
+def order_by_points(nums):
+    """
+    Write a function which sorts the given list of integers
+    in ascending order according to the sum of their digits.
+    Note: if there are several items with similar sum of their digits,
+    order them based on their index in original list.
+
+    For example:
+    >>> order_by_points([1, 11, -1, -11, -12]) == [-1, -11, 1, -12, 11]
+    >>> order_by_points([]) == []
+    """
+    def sum_of_digits(n):
+        return sum(int(i) for i in str(abs(n)))
+
+    return sorted(nums, key=lambda n: (sum_of_digits(n), nums.index(n)))
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+
+#tests/test_order_by_points.py
+import unittest
+from order_by_points import order_by_points
+
+
+class TestOrderByPoints(unittest.TestCase):
+
+    def test_order_by_points(self):
+        self.assertEqual(order_by_points([1, 11, -1, -11, -12]), [-1, -11, 1, -12, 11])
+        self.assertEqual(order_by_points([]), [])
+        self.assertEqual(order.order_by_points([15, 21, 11, 7]), [7, 15, 21, 11])
+
+
+if __name__ == "__main__":
+    unittest.main()#src/config.py
+import os
+
+class Config:
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:32021 for open-end generation.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:32021 for open-end generation.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:32021 for open-end generation.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:32021 for open-end generation.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:32021 for open-end generation.
+
+Task_ID HumanEval/6:
+Prompt:
+from typing import List
+
+
+def parse_nested_parens(paren_string: str) -> List[int]:
+    """ Input to this function is a string represented multiple groups for nested parentheses separated by spaces.
+    For each of the group, output the deepest level of nesting of parentheses.
+    E.g. (()()) has maximum two levels of nesting while ((())) has three.
+
+    >>> parse_nested_parens('(()()) ((())) () ((())()())')
+    [2, 3, 1, 3]
+    """
+
+Response:
+from typing import List
+
+
+def parse_nested_parens(paren_string: str) -> List[int]:
+    """ Input to this function is a string represented multiple groups for nested parentheses separated by spaces.
+    For each of the group, output the deepest level of nesting of parentheses.
+    E.g. (()()) has maximum two levels of nesting while ((())) has three.
+
+    >>> parse_nested_parens('(()()) ((())) () ((())()())')
+    [2, 3, 1, 3]
+    """
+    result = []
+    for group in paren_string.split():
+        max_depth = 0
+        current_depth = 0
+        for char in group:
+            if char == '(':
+                current_depth += 1
+                if current_depth > max_depth:
+                    max_depth = current_depth
+            elif char == ')':
+                current_depth -= 1
+        result.append(max_depth)
+    return result
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+
+    test_cases = ['(()())', '((()))', '()', '((())()())']
+    for test_case in test_cases:
+        print(f"Test case: {test_case}")
+        print(f"Result: {parse_nested_parens(test_case)}")
+        print("---")from typing import List
+
+def find_duplicates(nums: List[int]) -> List[int]:
+    """
+    Given an array of integers, 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.
+    Find all elements that appear twice in this array.
+    Could you do it without extra space and in O(n) runtime?
+
+    >>> find_duplicates([4,3,2,7,8,2,3,1])
+    [2, 3]
+    """
+    duplicates = []
+    for num in nums:
+        if nums[abs
+
+Task_ID HumanEval/63:
+Prompt:
+
+
+def fibfib(n: int):
+    """The FibFib number sequence is a sequence similar to the Fibbonacci sequnece that's defined as follows:
+    fibfib(0) == 0
+    fibfib(1) == 0
+    fibfib(2) == 1
+    fibfib(n) == fibfib(n-1) + fibfib(n-2) + fibfib(n-3).
+    Please write a function to efficiently compute the n-th element of the fibfib number sequence.
+    >>> fibfib(1)
+    0
+    >>> fibfib(5)
+    4
+    >>> fibfib(8)
+    24
+    """
+
+Response:
+
+
+def fibfib(n: int):
+    """The FibFib number sequence is a sequence similar to the Fibbonacci sequnece that's defined as follows:
+    fibfib(0) == 0
+    fibfib(1) == 0
+    fibfib(2) == 1
+    fibfib(n) == fibfib(n-1) + fibfib(n-2) + fibfib(n-3).
+    Please write a function to efficiently compute the n-th element of the fibfib number sequence.
+    >>> fibfib(1)
+    0
+    >>> fibfib(5)
+    4
+    >>> fibfib(8)
+    24
+    """
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 0
+    elif n == 2:
+        return 1
+    else:
+        a, b, c = 0, 0, 1
+        for _ in range(n - ):
+            a, b, c = b, c, a + b + c
+        return c
+
+
+if __name__ == "__main__":
+    import doctest
+
+    doctest.testmod()
+
+#tests/test_fibfib.py
+import pytest
+from fibfib import fibfib
+
+
+@pytest.mark.parametrize("n, expected", [
+    (0, 0),
+    (1, 0),
+    (2, 1),
+    (3, 1),
+    (4, 2),
+    (5, 4),
+    (6, 8),
+    (7, 16),
+    (8, 24),
+    (9, 40),
+    (10, 68),
+])
+def test_fibfib(n, expected):
+    assert fibfib(n) == expected#src/config.py
+import os
+
+class Config:
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SQLALCHEMY_DATABASE
+
+Task_ID HumanEval/17:
+Prompt:
+from typing import List
+
+
+def parse_music(music_string: str) -> List[int]:
+    """ Input to this function is a string representing musical notes in a special ASCII format.
+    Your task is to parse this string and return list of integers corresponding to how many beats does each
+    not last.
+
+    Here is a legend:
+    'o' - whole note, lasts four beats
+    'o|' - half note, lasts two beats
+    '.|' - quater note, lasts one beat
+
+    >>> parse_music('o o| .| o| o| .| .| .| .| o o')
+    [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]
+    """
+
+Response:
+from typing import List
+
+
+def parse_music(music_string: str) -> List[int]:
+    """ Input to this function is a string representing musical notes in a special ASCII format.
+    Your task is to parse this string and return list of integers corresponding to how many beats does each
+    not last.
+
+    Here is a legend:
+    'o' - whole note, lasts four beats
+    'o|' - half note, lasts two beats
+    '.|' - quater note, lasts one beat
+
+    >>> parse_music('o o| .| o| o| .| .| .| .| o o')
+    [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]
+    """
+    music_list = music_string.split()
+    beats_list = []
+    for note in music_list:
+        if note == 'o':
+            beats_list.append(4)
+        elif note == 'o|':
+            beats_list.append(2)
+        elif note == '.|':
+            beats_list.append(1)
+    return beats_list
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+
+    music_string = 'o o| .| o| o| .| .| .| .| o o'
+    print(parse_music(music_string))  # [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]
+
+# vim: set et ts=4 sw=4 sts=4:from typing import List
+
+def parse_music(music_string: str) -> List[int]:
+    """ Input to this function is a string representing musical notes in a special ASCII format.
+    Your task is to parse this string and return list of integers corresponding to how many beats does each
+    not last.
+
+    Here is a legend:
+    'o' - whole note
+
+Task_ID HumanEval/61:
+Prompt:
+
+
+def correct_bracketing(brackets: str):
+    """ brackets is a string of "(" and ")".
+    return True if every opening bracket has a corresponding closing bracket.
+
+    >>> correct_bracketing("(")
+    False
+    >>> correct_bracketing("()")
+    True
+    >>> correct_bracketing("(()())")
+    True
+    >>> correct_bracketing(")(()")
+    False
+    """
+
+Response:
+
+
+def correct_bracketing(brackets: str):
+    """ brackets is a string of "(" and ")".
+    return True if every opening bracket has a corresponding closing bracket.
+
+    >>> correct_bracketing("(")
+    False
+    >>> correct_bracketing("()")
+    True
+    >>> correct_bracketing("(()())")
+    True
+    >>> correct_bracketing(")(()")
+    False
+    """
+    stack = []
+    for bracket in brackets:
+        if bracket == "(":
+            stack.append(bracket)
+        elif bracket == ")":
+            if not stack or stack.pop() != "(":
+                return False
+    return not stack
+
+
+def test_correct_bracketing():
+    assert correct_bracketing("(") == False
+    assert correct_bracketing("()") == True
+    assert correct_bracketing("(()())") == True
+    assert correct_bracketing(")(()") == False
+
+
+test_correct_bracketing()
+
+# 스택을 사용하면 문제를 효율적으로 해결할 수 있다. 스택은 마지막에 들어온 원소가 먼저 나가는 구조를 가지고 있어서 이 문제에 적합하다. 스택에 원소를 넣으면서 여는 괄호를 만나면 �
+
+Task_ID HumanEval/66:
+Prompt:
+
+def digitSum(s):
+    """Task
+    Write a function that takes a string as input and returns the sum of the upper characters only'
+    ASCII codes.
+
+    Examples:
+        digitSum("") => 0
+        digitSum("abAB") => 131
+        digitSum("abcCd") => 67
+        digitSum("helloE") => 69
+        digitSum("woArBld") => 131
+        digitSum("aAaaaXa") => 153
+    """
+
+Response:
+
+def digitSum(s):
+    """Task
+    Write a function that takes a string as input and returns the sum of the upper characters only'
+    ASCII codes.
+
+    Examples:
+        digitSum("") => 0
+        digitSum("abAB") => 131
+        digitSum("abcCd") => 67
+        digitSum("helloE") => 69
+        digitSum("woArBld") => 131
+        digitSum("aAaaaXa") => 153
+    """
+    return sum(ord(c) for c in s if c.isupper())
+
+
+print(digitSum("abAB"))  # 131
+print(digitSum("abcCd"))  # 67
+print(digitSum("helloE"))  # 69
+print(digitSum("woArBld"))  # 131
+print(digitSum("aAaaaXa"))  # 153
+print(digitSum(""))  # 0
+
+# 131 is the sum of ASCII values of A (65) and B (66)
+# 67 is the sum of ASCII values of a (97), b (98) and C (67)
+# 69 is the sum of ASCII values of h (104), e (101) and E (69)
+# 131 is the sum of ASCII values of w (119), o (111), A (65) and B (66)
+# 153 is the sum of ASCII values of a (97), A (65), a (97), a (97) and X (88)
+# 0 is the sum of no uppercase characters.
+
+# ord() function returns an integer representing the Unicode character.
+# isupper() method returns True if the string is an uppercase letter.
+# sum() function returns the sum of all items in an iterable.
+# The iterable items are the ASCII values of the uppercase characters in the string.
+# The sum is the sum of the ASCII values of the uppercase characters in
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:32021 for open-end generation.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:32021 for open-end generation.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:32021 for open-end generation.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:32021 for open-end generation.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:32021 for open-end generation.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:32021 for open-end generation.
+
+Task_ID HumanEval/104:
+Prompt:
+
+def unique_digits(x):
+    """Given a list of positive integers x. return a sorted list of all 
+    elements that hasn't any even digit.
+
+    Note: Returned list should be sorted in increasing order.
+    
+    For example:
+    >>> unique_digits([15, 33, 1422, 1])
+    [1, 15, 33]
+    >>> unique_digits([152, 323, 1422, 10])
+    []
+    """
+
+Response:
+
+def unique_digits(x):
+    """Given a list of positive integers x. return a sorted list of all 
+    elements that hasn't any even digit.
+
+    Note: Returned list should be sorted in increasing order.
+    
+    For example:
+    >>> unique_digits([15, 33, 1422, 1])
+    [1, 15, 33]
+    >>> unique_digits([152, 323, 1422, 10])
+    []
+    """
+    def has_even_digit(n):
+        return any(int(digit) % 2 == 0 for digit in str(n))
+
+    return sorted([n for n in x if not has_even_digit(n)])
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+
+#tests/test_unique_digits.py
+import unittest
+from unique_digits import unique_digits
+
+class TestUniqueDigits(unittest.TestCase):
+
+    def test_unique_digits(self):
+        self.assertEqual(unique_digits([15, 33, 1422, 1]), [1, 15, 33])
+        self.assertEqual(unique_digits([152, 323, 1422, 10]), [])
+        self.assertEqual(unique_digits([123, 456, 789, 100]), [123, 456, 789])
+        self.assertEqual(unique_digits([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+
+if __name__ == '__main__':
+    unittest.main()import unittest
+from unique_digits import unique
+
+Task_ID HumanEval/137:
+Prompt:
+
+def compare_one(a, b):
+    """
+    Create a function that takes integers, floats, or strings representing
+    real numbers, and returns the larger variable in its given variable type.
+    Return None if the values are equal.
+    Note: If a real number is represented as a string, the floating point might be . or ,
+
+    compare_one(1, 2.5) ➞ 2.5
+    compare_one(1, "2,3") ➞ "2,3"
+    compare_one("5,1", "6") ➞ "6"
+    compare_one("1", 1) ➞ None
+    """
+
+Response:
+
+def compare_one(a, b):
+    """
+    Create a function that takes integers, floats, or strings representing
+    real numbers, and returns the larger variable in its given variable type.
+    Return None if the values are equal.
+    Note: If a real number is represented as a string, the floating point might be . or ,
+
+    compare_one(1, 2.5) ➞ 2.5
+    compare_one(1, "2,3") ➞ "2,3"
+    compare_one("5,1", "6") ➞ "6"
+    compare_one("1", 1) ➞ None
+    """
+    if a == b:
+        return None
+    if isinstance(a, str):
+        a = float(a.replace(",", "."))
+    if isinstance(b, str):
+        b = float(b.replace(",", "."))
+    if isinstance(a, float):
+        a = a.as_integer_ratio()[0]
+    if isinstance(b, float):
+        b = b.as_integer_ratio()[0]
+    return max(a, b)
+
+
+print(compare_one(1, 2.5))  # ➞ 2.5
+print(compare_one(1, "2,3"))  # ➞ "2,3"
+print(compare_one("5,1", "6"))  # ➞ "6"
+print(compare(1, 1))  # ➞ None
+
+
+def compare_two(a, b):
+    """
+    Create a function that takes two integers, floats, or strings representing
+    real numbers, and returns the larger variable in its given variable type.
+    Return None if the values are equal.
+    Note: If a real number is represented as a string, the floating point might be . or ,
+
+    compare_two(1, 2.5) ➞ 2.5
+    compare_two(1, "2,3") ➞ "2,3"
+    compare_two
+
+Task_ID HumanEval/116:
+Prompt:
+
+def sort_array(arr):
+    """
+    In this Kata, you have to sort an array of non-negative integers according to
+    number of ones in their binary representation in ascending order.
+    For similar number of ones, sort based on decimal value.
+
+    It must be implemented like this:
+    >>> sort_array([1, 5, 2, 3, 4]) == [1, 2, 3, 4, 5]
+    >>> sort_array([-2, -3, -4, -5, -6]) == [-6, -5, -4, -3, -2]
+    >>> sort_array([1, 0, 2, 3, 4]) [0, 1, 2, 3, 4]
+    """
+
+Response:
+
+def sort_array(arr):
+    """
+    In this Kata, you have to sort an array of non-negative integers according to
+    number of ones in their binary representation in ascending order.
+    For similar number of ones, sort based on decimal value.
+
+    It must be implemented like this:
+    >>> sort_array([1, 5, 2, 3, 4]) == [1, 2, 3, 4, 5]
+    >>> sort_array([-2, -3, -4, -5, -6]) == [-6, -5, -4, -3, -2]
+    >>> sort_array([1, 0, 2, 3, 4]) [0, 1, 2, 3, 4]
+    """
+    return sorted(arr, key=lambda x: (bin(x).count('1'), x))
+
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()# https://www.codewars.com/kata/525f3eda17c7cd9f9e000b39
+
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+
+def is_square(n):
+    if n < 0:
+        return False
+    return n**0.5 == int(n**0.5)
+
+
+def is_cube(n):
+    if n < 0:
+        return False
+    return n**(1./3.) == int(n**(1./3.))
+
+
+def is_fourth_power(n):
+    if n < 0:
+        return False
+    return n**0.25 == int(n**0.25)
+
+
+def is_fifth_power(n):
+    if n < 0:
+        return False
+    return n**0.2 == int(n**0.2)
+
+
+def
+
+Task_ID HumanEval/0:
+Prompt:
+from typing import List
+
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """ Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+    False
+    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+    True
+    """
+
+Response:
+from typing import List
+
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """ Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+    False
+    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+    True
+    """
+    numbers.sort()
+    for i in range(len(numbers) - 1):
+        if numbers[i+1] - numbers[i] < threshold:
+            return True
+    return False
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+
+# 1.0, 2.0, 3.0 -> False
+# 1.0, 2.8, 3.0, 4.0, 5.0, 2.0 -> True
+# 1.0, 2.0, 3.0, 4.0, 5.0, 2.0 -> False
+# 1.0, 2.8, 3.0, 4.0, 5.0, 2.0 -> True
+# 1.0, 2.0, 3.0, 4.0, 5.0, 2.0 -> False
+# 1.0, 2.8, 3.0, 4.0, 5.0, 2.0 -> True
+# 1.0, 2.0, 3.0, 4.0, 5.0, 2.0 -> False
+# 1.0, 2.8, 3.0, 4.0, 5.0, 2.0 -> True
+# 1.0, 2.0, 3.0, 4.0, 5.0, 2.0 ->
+
+Task_ID HumanEval/48:
+Prompt:
+
+
+def is_palindrome(text: str):
+    """
+    Checks if given string is a palindrome
+    >>> is_palindrome('')
+    True
+    >>> is_palindrome('aba')
+    True
+    >>> is_palindrome('aaaaa')
+    True
+    >>> is_palindrome('zbcd')
+    False
+    """
+
+Response:
+
+
+def is_palindrome(text: str):
+    """
+    Checks if given string is a palindrome
+    >>> is_palindrome('')
+    True
+    >>> is_palindrome('aba')
+    True
+    >>> is_palindrome('aaaaa')
+    True
+    >>> is_palindrome('zbcd')
+    False
+    """
+    return text == text[::-1]
+
+
+def is_prime(n: int):
+    """
+    Checks if given number is a prime
+    >>> is_prime(2)
+    True
+    >>> is_prime(4)
+    False
+    >>> is_prime(13)
+    True
+    >>> is_prime(1)
+    False
+    """
+    if n < 2:
+        return False
+    for i in range(2, int(n ** rt(n)) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+
+def is_even(n: int):
+    """
+    Checks if given number is even
+    >>> is_even(0)
+    True
+    >>> is_even(3)
+    False
+    >>> is_even(4)
+    True
+    """
+    return n % 2 == 0
+
+
+def is_odd(n: int):
+    """
+    Checks if given number is odd
+    >>> is_odd(1)
+    True
+    >>> is_odd(2)
+    False
+    >>> is_odd(3)
+    True
+    """
+    return n % 2 != 0
+
+
+def is_leap_year(year: int):
+    """
+    Checks if given year is a leap year
+    >>> is_leap_year(2000)
+    True
+    >>> is_leap_year(1900)
+    False
+    >>> is_leap_year(2004)
+    True
+    """
+    if year % 4 != 0:
+        return False
+    elif year % 100 != 0:
+        return True
+    elif year % 40
+
+Task_ID HumanEval/86:
+Prompt:
+
+def anti_shuffle(s):
+    """
+    Write a function that takes a string and returns an ordered version of it.
+    Ordered version of string, is a string where all words (separated by space)
+    are replaced by a new word where all the characters arranged in
+    ascending order based on ascii value.
+    Note: You should keep the order of words and blank spaces in the sentence.
+
+    For example:
+    anti_shuffle('Hi') returns 'Hi'
+    anti_shuffle('hello') returns 'ehllo'
+    anti_shuffle('Hello World!!!') returns 'Hello !!!Wdlor'
+    """
+
+Response:
+
+def anti_shuffle(s):
+    """
+    Write a function that takes a string and returns an ordered version of it.
+    Ordered version of string, is a string where all words (separated by space)
+    are replaced by a new word where all the characters arranged in
+    ascending order based on ascii value.
+    Note: You should keep the order of words and blank spaces in the sentence.
+
+    For example:
+    anti_shuffle('Hi') returns 'Hi'
+    anti_shuffle('hello') returns 'ehllo'
+    anti_shuffle('Hello World!!!') returns 'Hello !!!Wdlor'
+    """
+    words = s.split(' ')
+    new_words = []
+    for word in words:
+        new_word = ''.join(sorted(word))
+        new_words.append(new_word)
+    return ' '.join(new_words)
+
+
+print(anti_shuffle('Hello World!!!'))
+print(anti_shuffle('Hi'))
+print(anti_shuffle('hello'))
+print(anti_shuffle('a quick brown fox jumps over the lazy dog'))
+print(anti_shuffle('A Sorted String'))
+print(anti_shuffle('1234567890'))
+print(anti_shuffle('The quick brown fox jumps over the lazy dog'))
+print(anti_shuffle(''))
+print(anti_shuffle(' '))
+print(anti_shuffle('!'))
+print(anti_shuffle('123 456 789 0'))
+print(anti_shuffle('A Sorted String'))
+print(anti_shuffle('1234567890'))
+print(anti_shuffle('The quick brown fox jumps over the lazy dog'))
+print(anti_shuffle(''))
+print(anti_shuffle(' '))
+print(anti_shuffle('!'))
+print(anti))
+print(anti_shuffle('123 456 789 0'))
+print(anti_shuffle('A Sorted String'))
+print(anti_shuffle('
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:32021 for open-end generation.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:32021 for open-end generation.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:32021 for open-end generation.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:32021 for open-end generation.
+
+Task_ID HumanEval/20:
+Prompt:
+from typing import List, Tuple
+
+
+def find_closest_elements(numbers: List[float]) -> Tuple[float, float]:
+    """ From a supplied list of numbers (of length at least two) select and return two that are the closest to each
+    other and return them in order (smaller number, larger number).
+    >>> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.2])
+    (2.0, 2.2)
+    >>> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.0])
+    (2.0, 2.0)
+    """
+
+Response:
+from typing import List, Tuple
+
+
+def find_closest_elements(numbers: List[float]) -> Tuple[float, float]:
+    """ From a supplied list of numbers (of length at least two) select and return two that are the closest to each
+    other and return them in order (smaller number, larger number).
+    >>> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.2])
+    (2.0, 2.2)
+    >>> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.0])
+    (2.0, 2.0)
+    """
+    numbers.sort()
+    min_diff = float('inf')
+    closest_pair = (0, 0)
+    for i in range(len(numbers) - 1):
+        diff = numbers[i + 1] - numbers[i]
+        if diff < min_diff:
+            min_diff = diff
+            closest_pair = (numbers[i], numbers[i + 1])
+    return closest_pair
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+
+#test_closest_elements.py
+import unittest
+from closest_elements import find_closest_elements
+
+class TestClosestElements(unittest.TestCase):
+
+    def test_find_closest_elements(self):
+        self.assertEqual(find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.2]), (2.0, 2.2))
+        self.assertEqual(find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.0]), (2.0, 2.0))
+        self.assertEqual(find_closest_elements([1.0, 2.0, 3.0
+
+Task_ID HumanEval/83:
+Prompt:
+
+def starts_one_ends(n):
+    """
+    Given a positive integer n, return the count of the numbers of n-digit
+    positive integers that start or end with 1.
+    """
+
+Response:
+
+def starts_one_ends(n):
+    """
+    Given a positive integer n, return the count of the numbers of n-digit
+    positive integers that start or end with 1.
+    """
+    return 2 * 9 * 10**(n-2)
+
+
+def starts_ends_both(n):
+    """
+    Given a positive integer n, return the count of the numbers of n-digit
+    positive integers that start and end with the same digit.
+    """
+    return 9 * 10**(n-2)
+
+
+def starts_ends_neither(n):
+    """
+    Given a positive integer n, return the count of the numbers of n-digit
+    positive integers that neither start nor end with 1.
+    """
+    return 8**n - 2 * 9 * 10**(n-2)
+
+
+def main():
+    n = int(input("Enter the number of digits: "))
+    print("Count of numbers that start or end with 1: ", starts_one_ends(n))
+    print("Count of numbers that start and end with the same digit: ", starts_ends_both(n))
+    print("Count of numbers that neither start nor end with 1: ", starts_ends_neither(n))
+
+
+if __name__ == "__main__":
+    main()
+
+#test_count_numbers.py
+import unittest
+from count_numbers import starts_one_ends, starts_ends_both, starts_ends_neither
+
+
+class TestCountNumbers(unittest.TestCase):
+
+    def test_starts_one_ends(self):
+        self.assertEqual(starts_one_ends(2), 18)
+        self.assertEqual(starts_one_ends(3), 180)
+        self.assertEqual(starts_one_ends(4), 1800)
+
+    def test_starts_ends_both(self):
+        self.assertEqual(starts_ends_both(2), 9)
+        self.assertEqual(starts_ends_both(3), 
+
+Task_ID HumanEval/2:
+Prompt:
+
+
+def truncate_number(number: float) -> float:
+    """ Given a positive floating point number, it can be decomposed into
+    and integer part (largest integer smaller than given number) and decimals
+    (leftover part always smaller than 1).
+
+    Return the decimal part of the number.
+    >>> truncate_number(3.5)
+    0.5
+    """
+
+Response:
+
+
+def truncate_number(number: float) -> float:
+    """ Given a positive floating point number, it can be decomposed into
+    and integer part (largest integer smaller than given number) and decimals
+    (leftover part always smaller than 1).
+
+    Return the decimal part of the number.
+    >>> truncate_number(3.5)
+    0.5
+    """
+    return number % 1
+
+
+def main():
+    """
+    Main function to test the other functions.
+    """
+    print(f"The number 3.5 has a decimal part of {truncate_number(3.5)}")
+    print(f"The number 4.7 has a decimal part of {truncate_number(4.7)}")
+    print(f"The number 10.99 has a decimal part of {truncate(10.99)}")
+
+
+if __name__ == "__main__":
+    main()
+
+#tests/test_truncate_number.py
+import pytest
+from truncate_number import truncate_number
+
+
+def test_truncate_number():
+    assert truncate_number(3.5) == 0.5
+    assert truncate_number(4.7) == 0.7
+    assert truncate_number(10.99) == 0.99
+    assert truncate_number(0) == 0
+    assert truncate_number(-3.5) == 0.5
+    assert truncate_number(-4.7) == 0.7
+    assert truncate_number(-10.99) == 0.99
+    assert truncate_number(float('inf')) == 0
+    assert truncate_number(float('-inf')) == 0
+    assert truncate_number(float('nan')) == float('nan')
+
+#tests/test_truncate_number_2.py
+import pytest
+from truncate_number import truncate_number
+
+
+def test_truncate_number():
+    assert truncate_number(3.5) == 0.5
+    assert truncate_number(4
+
+Task_ID HumanEval/41:
+Prompt:
+
+
+def car_race_collision(n: int):
+    """
+    Imagine a road that's a perfectly straight infinitely long line.
+    n cars are driving left to right;  simultaneously, a different set of n cars
+    are driving right to left.   The two sets of cars start out being very far from
+    each other.  All cars move in the same speed.  Two cars are said to collide
+    when a car that's moving left to right hits a car that's moving right to left.
+    However, the cars are infinitely sturdy and strong; as a result, they continue moving
+    in their trajectory as if they did not collide.
+
+    This function outputs the number of such collisions.
+    """
+
+Response:
+
+
+def car_race_collision(n: int):
+    """
+    Imagine a road that's a perfectly straight infinitely long line.
+    n cars are driving left to right;  simultaneously, a different set of n cars
+    are driving right to left.   The two sets of cars start out being very far from
+    each other.  All cars move in the same speed.  Two cars are said to collide
+    when a car that's moving left to right hits a car that's moving right to left.
+    However, the cars are infinitely sturdy and strong; as a result, they continue moving
+    in their trajectory as if they did not collide.
+
+    This function outputs the number of such collisions.
+    """
+    return n * n
+
+
+def main():
+    print(car_race_collision(3))
+
+
+if __name__ == "__main__":
+    main()
+
+#tests/test_car_race_collision.py
+import pytest
+from car_race_collision import car_race_collision
+
+
+def test_car_race_collision():
+    assert car_race_collision(1) == 1
+    assert car_race_collision(2) == 4
+    assert car_race_collision(3) == 9
+    assert car_race_collision(4) == 16
+    assert car_race_collision(5) == 25
+    assert car_race_collision(10) == 100
+    assert car_race_collision(20) == 400
+    assert car_race_collision(100) == 10000
+
+#tests/test_main.py
+from car_race_collision import main
+
+
+def test_main():
+    assert main() is None  # main function should not return anything.
+
+#tests/test_solution.py
+import pytest
+from car_race_collision import car_race_collision
+
+
+def test_solution():
+    assert car_race_collision(1) == 1
+   
+
