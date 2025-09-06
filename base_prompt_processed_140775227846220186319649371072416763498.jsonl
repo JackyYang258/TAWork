@@ -1,0 +1,20 @@
+{"task_id": "HumanEval/156", "completion": "    pass"}
+{"task_id": "HumanEval/11", "completion": "    return ''.join(str(int(a[i]) ^ int(b[i])) for i in range(len(a)))"}
+{"task_id": "HumanEval/127", "completion": "    if interval1[1] < interval2[0] or interval2[1] < interval1[0]:\n        return \"NO\"\n    else:\n        return \"YES\""}
+{"task_id": "HumanEval/7", "completion": "    return [s for s in strings if substring in s]"}
+{"task_id": "HumanEval/145", "completion": "    return sorted(nums, key=lambda x: (sum(map(int, str(abs(x)))), x))"}
+{"task_id": "HumanEval/6", "completion": "    result = []\n    for group in paren_string.split():\n        stack = []\n        max_depth = 0\n        for char in group:\n            if char == '(':\n                stack.append(char)\n                max_depth = max(max_depth, len(stack))\n            elif char == ')':\n                stack.pop()\n        result.append(max_depth)\n    return result"}
+{"task_id": "HumanEval/63", "completion": "    if n == 0:\n        return 0\n    if n == 1:\n        return 0\n    if n == 2:\n        return 1\n    return fibfib(n-1) + fibfib(n-2) + fibfib(n-3)"}
+{"task_id": "HumanEval/17", "completion": "    music_string = music_string.split()\n    music_list = []\n    for i in music_string:\n        if i == 'o':\n            music_list.append(4)\n        elif i == 'o|':\n            music_list.append(2)\n        elif i == '.|':\n            music_list.append(1)\n    return music_list"}
+{"task_id": "HumanEval/61", "completion": "    if brackets == \"\":\n        return True\n    if brackets[0] == \"(\" and brackets[-1] == \")\":\n        return correct_bracketing(brackets[1:-1])\n    return False"}
+{"task_id": "HumanEval/66", "completion": "    return sum(ord(c) for c in s if c.isupper())"}
+{"task_id": "HumanEval/104", "completion": "    return [i for i in x if all(int(j) % 2 != 0 for j in str(i))]"}
+{"task_id": "HumanEval/137", "completion": "    if type(a) == type(b):\n        if a == b:\n            return None\n        elif type(a) == int:\n            if a > b:\n                return a\n            else:\n                return b\n        elif type(a) == float:\n            if a > b:\n                return a\n            else:\n                return b\n        elif type(a) == str:\n            if a > b:\n                return a\n            else:\n                return b\n    else:\n        if type(a) == int:\n            return a\n        elif type(a) == float:\n            return a\n        elif type(a) == str:\n            return a\n        elif type(b) == int:\n            return b\n        elif type(b) == float:\n            return b\n        elif type(b) == str:\n            return b"}
+{"task_id": "HumanEval/116", "completion": "    return sorted(arr, key=lambda x: (bin(x).count('1'), x))"}
+{"task_id": "HumanEval/0", "completion": "    numbers.sort()\n    for i in range(len(numbers) - 1):\n        if numbers[i + 1] - numbers[i] < threshold:\n            return True\n    return False"}
+{"task_id": "HumanEval/48", "completion": "    return text == text[::-1]"}
+{"task_id": "HumanEval/86", "completion": "    return ' '.join(sorted(s.split(), key=lambda x: x.lower()))"}
+{"task_id": "HumanEval/20", "completion": "    numbers.sort()\n    min_diff = numbers[1] - numbers[0]\n    min_pair = (numbers[0], numbers[1])\n    for i in range(1, len(numbers) - 1):\n        diff = numbers[i + 1] - numbers[i]\n        if diff < min_diff:\n            min_diff = diff\n            min_pair = (numbers[i], numbers[i + 1])\n    return min_pair"}
+{"task_id": "HumanEval/83", "completion": "    if n == 1:\n        return 1\n    elif n == 2:\n        return 10\n    else:\n        return 9 * starts_one_ends(n - 1)"}
+{"task_id": "HumanEval/2", "completion": "    return number % 1"}
+{"task_id": "HumanEval/41", "completion": "    return n * (n - 1) // 2"}
