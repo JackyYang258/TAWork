@@ -39,6 +39,9 @@ def postprocess_response(prompt: str, response: str) -> str:
             processed_block.append("")
             continue
         
+        if line.strip().startswith('#'):
+            continue
+        
         current_indent_len = len(line) - len(line.lstrip())
         
         # 关键停止条件：如果当前行的缩进比基准缩进还要小，
@@ -47,14 +50,15 @@ def postprocess_response(prompt: str, response: str) -> str:
             break
         
         # 修正缩进：移除原始的基准缩进，然后添加标准的4个空格缩进
-        standard_indent = "    "
-        reindented_line = standard_indent + line[base_indent_len:]
-        processed_block.append(reindented_line)
+        
+        processed_block.append(line)
             
     # 4. 生成最终结果
     #    将处理好的所有行重新组合成一个字符串
     response_processed = "\n".join(processed_block).rstrip()
     
+    standard_indent = "    "
+    response_processed = standard_indent + response_processed.lstrip()
     return response_processed
 
 # --- 定义一系列测试用例 ---
@@ -63,53 +67,21 @@ test_cases = [
         "name": "场景 1: 修复不正确的缩进",
         "prompt": "def make_a_pile(n):",
         "response": textwrap.dedent("""
-            if n % 2 == 0:
+             if n % 2 == 0:
                   return [n + 2 * i for i in range(n)]
-               else:
+             else:
                     return [n + 2 * i for i in range(n)]
         """).strip()
     },
     {
-        "name": "场景 2: 移除无关的后续函数",
-        "prompt": "def incr_list(l: list):",
-        "response": textwrap.dedent("""
-          return [i + 1 for i in l]
-        def desc_list(l:list):
-            return [i - 1 for i in l]
-        """).strip()
+        "name":"test156",
+        "prompt":"\ndef int_to_mini_roman(number):\n    \"\"\"\n    Given a positive integer, obtain its roman numeral equivalent as a string,\n    and return it in lowercase.\n    Restrictions: 1 <= num <= 1000\n\n    Examples:\n    >>> int_to_mini_roman(19) == 'xix'\n    >>> int_to_mini_roman(152) == 'clii'\n    >>> int_to_mini_roman(426) == 'cdxxvi'\n    \"\"\"\n",
+        "response": "\ndef int_to_mini_roman(number):\n    \"\"\"\n    Given a positive integer, obtain its roman numeral equivalent as a string,\n    and return it in lowercase.\n    Restrictions: 1 <= num <= 1000\n\n    Examples:\n    >>> int_to_mini_roman(19) == 'xix'\n    >>> int_to_mini_roman(152) == 'clii'\n    >>> int_to_mini_roman(426) == 'cdxxvi'\n    \"\"\"\n    # TODO: Implement this function\n    pass\n\n\ndef mini_roman_to_int(roman):\n    \"\"\"\n    Given a string representing a roman numeral, return its integer equivalent.\n    Restrictions: 1 <= num <= 1000\n\n    Examples:\n    >>> mini_roman_to_int('xix') == 19\n    >>> mini_roman_to_int('clii') == 152\n    >>> mini_roman_to_int('cdxxvi') == 426\n    \"\"\"\n    # TODO: Implement this function\n    pass\n\n\ndef roman_to_int(roman):\n    \"\"\"\n    Given a string representing a roman numeral, return its integer equivalent.\n    Restrictions: 1 <= num <= 3999\n\n    Examples:\n    >>> roman_to_int('xix') == 19\n    >>> roman_to_int('clii') == 152\n    >>> roman_to_int('cdxxvi') == 426\n    >>> roman_to_int('mmmcmxcix') == 3999\n    \"\"\"\n    # TODO: Implement this function\n    pass\n\n\ndef int_to_roman(number):\n    \"\"\"\n    Given a positive integer, obtain its roman numeral equivalent as a string,\n    and return it in lowercase.\n    Restrictions: 1 <= num <= 3999\n\n    Examples:\n    >>> int_to_roman(19) == 'xix'\n    >>> int_to_roman(152"
     },
-    {
-        "name": "场景 3: 响应包含原始提示",
-        "prompt": "def my_func(a, b):",
-        "response": textwrap.dedent("""
-        def my_func(a, b):
-            # 返回两数之和
-            return a + b
-        """).strip()
-    },
-    {
-        "name": "场景 4: 保持多级缩进的相对结构",
-        "prompt": "def process_data(data):",
-        "response": textwrap.dedent("""
-             results = []
-             for item in data:
-               if item > 0:
-                 results.append(item * 2)
-             return results
-        """).strip()
-    },
-    {
-        "name": "场景 5: 模型响应为空",
-        "prompt": "def do_nothing():",
-        "response": "   \n\n   "
-    },
-    {
-        "name": "场景 6: 代码已经格式正确",
-        "prompt": "def greet(name):",
-        "response": textwrap.dedent("""
-            print(f"Hello, {name}!")
-            return True
-        """).strip()
+    {        
+        "name":"test63",
+        "prompt":"\n\ndef fibfib(n: int):\n    \"\"\"The FibFib number sequence is a sequence similar to the Fibbonacci sequnece that's defined as follows:\n    fibfib(0) == 0\n    fibfib(1) == 0\n    fibfib(2) == 1\n    fibfib(n) == fibfib(n-1) + fibfib(n-2) + fibfib(n-3).\n    Please write a function to efficiently compute the n-th element of the fibfib number sequence.\n    >>> fibfib(1)\n    0\n    >>> fibfib(5)\n    4\n    >>> fibfib(8)\n    24\n    \"\"\"\n",
+        "response":"\n\ndef fibfib(n: int):\n    \"\"\"The FibFib number sequence is a sequence similar to the Fibbonacci sequnece that's defined as follows:\n    fibfib(0) == 0\n    fibfib(1) == 0\n    fibfib(2) == 1\n    fibfib(n) == fibfib(n-1) + fibfib(n-2) + fibfib(n-3).\n    Please write a function to efficiently compute the n-th element of the fibfib number sequence.\n    >>> fibfib(1)\n    0\n    >>> fibfib(5)\n    4\n    >>> fibfib(8)\n    24\n    \"\"\"\n    if n == 0:\n        return 0\n    if n == 1:\n        return 0\n    if n == 2:\n        return 1\n    return fibfib(n-1) + fibfib(n-2) + fibfib(n-3)\n\n\ndef fibfib_memo(n: int, memo: dict):\n    \"\"\"The FibFib number sequence is a sequence similar to the Fibbonacci sequnece that's defined as follows:\n    fibfib(0) == 0\n    fibfib(1) == 0\n    fibfib(2) == 1\n    fibfib(n) == fibfib(n-1) + fibfib(n-2) + fibfib(n-3).\n    Please write a function to efficiently compute the n-th element of the fibfib number sequence.\n    >>> fibfib(1)\n    0\n    >>> fibfib(5)\n    4\n    >>> fibfib(8)\n    24\n    \"\"\"\n    if n == 0:\n        return 0"
     }
 ]
 
@@ -126,3 +98,10 @@ for i, case in enumerate(test_cases):
     print("\n[>> 处理后结果 <<]:")
     print(processed_result)
     print("\n" + "="*50 + "\n")
+    
+    if i == 1:
+        print("test156原来结果")
+        print("    num = [1, 4, 5, 9, 10, 40, 50, 90,  \n           100, 400, 500, 900, 1000] \n    sym = [\"I\", \"IV\", \"V\", \"IX\", \"X\", \"XL\",  \n           \"L\", \"XC\", \"C\", \"CD\", \"D\", \"CM\", \"M\"] \n    i = 12\n    res = ''\n    while number: \n        div = number // num[i] \n        number %= num[i] \n        while div: \n            res += sym[i] \n            div -= 1\n        i -= 1\n    return res.lower()\n")
+    if i == 2:
+        print("test63原来结果")
+        print("    if n == 0:\n        return 0\n    if n == 1:\n        return 0\n    if n == 2:\n        return 1\n    return fibfib(n - 1) + fibfib(n - 2) + fibfib(n - 3)\n")
